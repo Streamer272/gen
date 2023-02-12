@@ -2,6 +2,8 @@
 @import "../styles.scss";
 
 .app {
+    width: 40vw;
+
   .radio-group {
     display: flex;
     align-items: flex-start;
@@ -64,12 +66,21 @@
         }
     
         .code {
-          font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          font-size: 1rem;
           font-family: 'JetBrains Mono', monospace;
           padding: 0.8rem 1.6rem;
           margin: 0;
           background-color: mat.get-color-from-palette($secondary-palette, 700);
           border-radius: 0.5rem;
+
+          .material-symbols-outlined {
+            padding: 0;
+            margin: 0 -0.5rem 0 1rem;
+            cursor: pointer;
+          }
         }
     }
   }

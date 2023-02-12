@@ -18,6 +18,35 @@ export class AppComponent {
   scripting?: string;
   styling?: string;
 
+  setName(value: string) {
+    this.name = value;
+  }
+
+  setFramework(event: MatRadioChange) {
+    this.framework = event.value;
+  }
+
+  setScripting(event: MatRadioChange) {
+    this.scripting = event.value;
+  }
+
+  setStyling(event: MatRadioChange) {
+    this.styling = event.value;
+  }
+
+  reset() {
+    this.name = undefined;
+    this.framework = undefined;
+    this.scripting = undefined;
+    this.styling = undefined;
+    // @ts-ignore
+    this.stepper?.reset();
+  }
+
+  copy(text: string) {
+    navigator.clipboard.writeText(text)
+  }
+
   computeAnswer(): AnswerPart[] {
     const result = [];
     const createVite = `yarn create vite ${this.name}`;
@@ -98,30 +127,5 @@ export class AppComponent {
     }
 
     return result;
-  }
-
-  setName(value: string) {
-    this.name = value;
-  }
-
-  setFramework(event: MatRadioChange) {
-    this.framework = event.value;
-  }
-
-  setScripting(event: MatRadioChange) {
-    this.scripting = event.value;
-  }
-
-  setStyling(event: MatRadioChange) {
-    this.styling = event.value;
-  }
-
-  reset() {
-    this.name = undefined;
-    this.framework = undefined;
-    this.scripting = undefined;
-    this.styling = undefined;
-    // @ts-ignore
-    this.stepper?.reset();
   }
 }

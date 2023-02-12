@@ -97,10 +97,13 @@
     <mat-step label="Done" completed="false">
       <div class="answer">
         <div class="wrapper">
-            <div *ngFor="let item of computeAnswer()">
-              <p class="label">{{ item.label }}</p>
-              <p class="code">{{ item.code }}</p>
-            </div>
+          <div *ngFor="let item of computeAnswer()">
+            <p class="label">{{ item.label }}</p>
+            <p class="code">
+              {{ item.code }}
+              <span class="material-symbols-outlined" (click)="copy(item.code)">content_copy</span>
+            </p>
+          </div>
         </div>
       </div>
 
