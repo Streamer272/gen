@@ -1,5 +1,26 @@
 <div class="app">
-  <mat-horizontal-stepper labelPosition="end" animationDuration="200" linear>
+  <mat-horizontal-stepper
+    labelPosition="end"
+    animationDuration="200"
+    linear
+    #stepper
+  >
+    <mat-step label="Name" [completed]="!!name">
+      <mat-form-field appearance="fill">
+        <input
+          matInput
+          placeholder="Name"
+          (change)="setName(nameInput.value)"
+          #nameInput
+        />
+      </mat-form-field>
+
+      <div class="navigation">
+        <button [class]="!name ? 'disabled' : ''" mat-button matStepperNext>
+          Next
+        </button>
+      </div>
+    </mat-step>
     <mat-step label="Framework" [completed]="!!framework">
       <mat-radio-group
         class="radio-group"
@@ -17,6 +38,7 @@
       </mat-radio-group>
 
       <div class="navigation">
+        <button mat-button matStepperPrevious>Back</button>
         <button
           [class]="!framework ? 'disabled' : ''"
           mat-button
@@ -37,7 +59,11 @@
           [disabled]="framework && ['angular'].includes(framework)"
           >JavaScript</mat-radio-button
         >
-        <mat-radio-button value="typescript">TypeScript</mat-radio-button>
+        <mat-radio-button
+          value="typescript"
+          [disabled]="framework && ['plain'].includes(framework)"
+          >TypeScript</mat-radio-button
+        >
       </mat-radio-group>
 
       <div class="navigation">
@@ -69,7 +95,18 @@
       </div>
     </mat-step>
     <mat-step label="Done" completed="false">
-      <p>Hello World!</p>
+      <div class="answer">
+        <div class="wrapper">
+            <div *ngFor="let item of computeAnswer()">
+              <p class="label">{{ item.label }}</p>
+              <p class="code">{{ item.code }}</p>
+            </div>
+        </div>
+      </div>
+
+      <div class="navigation">
+        <button mat-button (click)="reset()">Reset</button>
+      </div>
     </mat-step>
   </mat-horizontal-stepper>
 </div>
