@@ -127,7 +127,7 @@ export class AppComponent {
     if (this.framework !== 'angular' && this.styling === 'scss') {
       result.push({
         label: `Add SASS compiler`,
-        code: `yarn global add sass`,
+        code: `yarn add --dev sass`,
         docs: `https://sass-lang.com/guide`,
       });
     }
