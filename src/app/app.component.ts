@@ -8,9 +8,23 @@ import { MatRadioChange } from '@angular/material/radio';
 })
 export class AppComponent {
   title = 'gen';
-  query: Map<string, string> = new Map<string, string>()
+  framework?: string;
+  scripting?: string;
+  styling?: string;
 
-  public change(key: string, event: MatRadioChange) {
-    this.query.set(key, event.value)
+  computeAnswer() {
+
+  }
+
+  setFramework(event: MatRadioChange) {
+    this.framework = event.value;
+  }
+
+  setScripting(event: MatRadioChange) {
+    this.scripting = event.value;
+  }
+
+  setStyling(event: MatRadioChange) {
+    this.styling = event.value;
   }
 }

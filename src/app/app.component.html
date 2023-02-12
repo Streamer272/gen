@@ -1,7 +1,75 @@
 <div class="app">
-  <label id="radio-framework">Selet a framework</label>
-  <mat-radio-group aria-labelledby="radio-framework" class="radio-group" [required]="true" (change)="change('framework', $event)">
-    <mat-radio-button value="react">React</mat-radio-button>
-    <mat-radio-button value="angular">Angular</mat-radio-button>
-  </mat-radio-group>
+  <mat-horizontal-stepper labelPosition="end" animationDuration="200" linear>
+    <mat-step label="Framework" [completed]="!!framework">
+      <mat-radio-group
+        class="radio-group"
+        [required]="true"
+        (change)="setFramework($event)"
+      >
+        <mat-radio-button value="plain">Plain</mat-radio-button>
+        <mat-radio-button value="angular">Angular</mat-radio-button>
+        <mat-radio-button value="react">React</mat-radio-button>
+        <mat-radio-button value="next">Next</mat-radio-button>
+        <mat-radio-button value="vue">Vue</mat-radio-button>
+        <mat-radio-button value="nuxt">Nuxt</mat-radio-button>
+        <mat-radio-button value="svelte">Svelte</mat-radio-button>
+        <mat-radio-button value="svelte-kit">Svelte Kit</mat-radio-button>
+      </mat-radio-group>
+
+      <div class="navigation">
+        <button
+          [class]="!framework ? 'disabled' : ''"
+          mat-button
+          matStepperNext
+        >
+          Next
+        </button>
+      </div>
+    </mat-step>
+    <mat-step label="Scripting language" [completed]="!!scripting">
+      <mat-radio-group
+        class="radio-group"
+        [required]="true"
+        (change)="setScripting($event)"
+      >
+        <mat-radio-button
+          value="javascript"
+          [disabled]="framework && ['angular'].includes(framework)"
+          >JavaScript</mat-radio-button
+        >
+        <mat-radio-button value="typescript">TypeScript</mat-radio-button>
+      </mat-radio-group>
+
+      <div class="navigation">
+        <button mat-button matStepperPrevious>Back</button>
+        <button
+          [class]="!scripting ? 'disabled' : ''"
+          mat-button
+          matStepperNext
+        >
+          Next
+        </button>
+      </div>
+    </mat-step>
+    <mat-step label="Styling language" [completed]="!!styling">
+      <mat-radio-group
+        class="radio-group"
+        [required]="true"
+        (change)="setStyling($event)"
+      >
+        <mat-radio-button value="css">CSS</mat-radio-button>
+        <mat-radio-button value="scss">SCSS</mat-radio-button>
+      </mat-radio-group>
+
+      <div class="navigation">
+        <button mat-button matStepperPrevious>Back</button>
+        <button [class]="!styling ? 'disabled' : ''" mat-button matStepperNext>
+          Next
+        </button>
+      </div>
+    </mat-step>
+    <mat-step label="Done" completed="false">
+      <p>Hello World!</p>
+    </mat-step>
+  </mat-horizontal-stepper>
 </div>
