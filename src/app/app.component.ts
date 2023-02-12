@@ -4,6 +4,7 @@ import { MatRadioChange } from '@angular/material/radio';
 interface AnswerPart {
   label: string;
   code: string;
+  docs?: string;
 }
 
 @Component({
@@ -44,7 +45,7 @@ export class AppComponent {
   }
 
   copy(text: string) {
-    navigator.clipboard.writeText(text)
+    navigator.clipboard.writeText(text);
   }
 
   computeAnswer(): AnswerPart[] {
@@ -68,7 +69,11 @@ export class AppComponent {
           },
           {
             label: `Create app`,
-            code: `ng new ${this.name} --style=${this.styling}`,
+            code: `ng new ${this.name}${
+              ['css', 'scss'].includes(this.styling || '')
+                ? ' --style=${this.styling}'
+                : ''
+            }`,
           }
         );
         break;
@@ -123,7 +128,26 @@ export class AppComponent {
       result.push({
         label: `Add SASS compiler`,
         code: `yarn global add sass`,
+        docs: `https://sass-lang.com/guide`,
       });
+    }
+    else if (this.styling === "tailwind") {
+      result.push({
+        label: `Add TailWindCSS`,
+        code: `yarn add --dev tailwindcss`
+      })
+      result.push({
+        label: `Initialize TailWindCSS`,
+        code: `npx tailwindcss init`,
+        docs: `https://tailwindcss.com/docs/installation`
+      })
+    }
+    else if (this.styling === "bootstrap") {
+      result.push({
+        label: `Add Bootstrap`,
+        code: `yarn add bootstrap`,
+        docs: `https://getbootstrap.com/`
+      })
     }
 
     return result;
