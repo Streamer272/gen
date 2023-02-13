@@ -21,4 +21,20 @@
       font-size: 3rem;
     }
   }
+
+  .repo-link {
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    text-decoration: none;
+    color: mat.get-color-from-palette($secondary-palette, 300);
+    font-size: 1.4rem;
+    transition: transform 250ms ease-in-out, color 250ms ease-in-out;
+    transform: scale(1);
+
+    &:hover {
+      transform: scale(1.1);
+      color: mat.get-color-from-palette($secondary-palette, 100);
+    }
+  }
 }
