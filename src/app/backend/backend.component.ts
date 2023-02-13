@@ -89,7 +89,7 @@ export class BackendComponent {
         result.push(
           {
             label: `Create app`,
-            code: `mkdir ${this.name} && cd ${this.name} && python3 -m venv venv && . ./venv/bin/activate`,
+            code: `curl ${window.location.origin}/assets/init-python.sh | bash -s -- "${this.name}"`,
           },
           {
             label: `Install Flask`,
@@ -102,7 +102,7 @@ export class BackendComponent {
         result.push(
           {
             label: `Create app`,
-            code: `mkdir ${this.name} && cd ${this.name} && python3 -m venv venv && . ./venv/bin/activate`,
+            code: `curl ${window.location.origin}/assets/init-python.sh | bash -s -- "${this.name}"`,
           },
           {
             label: `Install FastAPI`,
@@ -143,7 +143,7 @@ export class BackendComponent {
         result.push(
           {
             label: `Create app`,
-            code: `mkdir ${this.name} && cd ${this.name} && go mod init ${this.name}`,
+            code: `curl ${window.location.origin}/assets/init-go.sh | bash -s -- "${this.name}"`,
           },
           {
             label: `Install Gin`,
@@ -156,7 +156,7 @@ export class BackendComponent {
         result.push(
           {
             label: `Create app`,
-            code: `mkdir ${this.name} && cd ${this.name} && go mod init ${this.name}`,
+            code: `curl ${window.location.origin}/assets/init-go.sh | bash -s -- "${this.name}"`,
           },
           {
             label: `Install Fiber`,

@@ -23,7 +23,7 @@
 
       &:not(:last-of-type) {
         border-right: 1px solid
-          mat.get-color-from-palette($secondary-palette, 500);
+          mat.get-color-from-palette($secondary-palette, 700);
       }
     }
 
