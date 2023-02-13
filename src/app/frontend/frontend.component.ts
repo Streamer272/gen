@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MatRadioChange } from '@angular/material/radio';
+import { Title } from '@angular/platform-browser';
 
 interface AnswerPart {
   label: string;
@@ -18,6 +19,10 @@ export class FrontendComponent {
   framework?: string;
   scripting?: string;
   styling?: string;
+
+  constructor(private titleService: Title) {
+    this.titleService.setTitle("New - frontend")
+  }
 
   setName(value: string) {
     this.name = value;

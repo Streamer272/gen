@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-backend',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./backend.component.scss']
 })
 export class BackendComponent {
-
+  constructor(private titleService: Title) {
+    this.titleService.setTitle("New - backend")
+  }
 }
