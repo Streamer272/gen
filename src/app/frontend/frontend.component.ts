@@ -21,7 +21,7 @@ export class FrontendComponent {
   styling?: string;
 
   constructor(private titleService: Title) {
-    this.titleService.setTitle("New - frontend")
+    this.titleService.setTitle('New - frontend');
   }
 
   setName(value: string) {

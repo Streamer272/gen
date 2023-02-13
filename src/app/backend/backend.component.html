@@ -1,1 +1,90 @@
-<p>backend works!</p>
+<mat-stepper
+  labelPosition="end"
+  animationDuration="200"
+  orientation="horizontal"
+  class="stepper"
+  linear
+  #stepper
+>
+  <mat-step label="Name" [completed]="!!name">
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Name"
+        (change)="setName(nameInput.value)"
+        #nameInput
+      />
+    </mat-form-field>
+
+    <div class="navigation">
+      <button [class]="!name ? 'disabled' : ''" mat-button matStepperNext>
+        Next
+      </button>
+    </div>
+  </mat-step>
+  <mat-step label="Framework" [completed]="!!framework">
+    <mat-radio-group
+      class="radio-group"
+      [required]="true"
+      (change)="setFramework($event)"
+    >
+      <p class="lang">JavaScript / TypeScript</p>
+      <mat-radio-button value="express">Express</mat-radio-button>
+      <mat-radio-button value="nest">NestJS</mat-radio-button>
+      <mat-radio-button value="next">NextJS</mat-radio-button>
+      <p class="lang">Python</p>
+      <mat-radio-button value="django">Django</mat-radio-button>
+      <mat-radio-button value="flask">Flask</mat-radio-button>
+      <mat-radio-button value="fastapi">FastAPI</mat-radio-button>
+      <p class="lang">Java / Kotlin</p>
+      <mat-radio-button value="spring">SpringBoot</mat-radio-button>
+      <mat-radio-button value="ktor">Ktor</mat-radio-button>
+      <p class="lang">PHP</p>
+      <mat-radio-button value="laravel">Laravel</mat-radio-button>
+      <mat-radio-button value="symfony">Symfony</mat-radio-button>
+      <p class="lang">Golang</p>
+      <mat-radio-button value="gin">Gin</mat-radio-button>
+      <mat-radio-button value="fiber">Fiber</mat-radio-button>
+      <p class="lang">Rust</p>
+      <mat-radio-button value="rocket">Rocket</mat-radio-button>
+      <p class="lang">C#</p>
+      <mat-radio-button value="asp.net">ASP.NET</mat-radio-button>
+      <p class="lang">Swift</p>
+      <mat-radio-button value="vapor">Vapor</mat-radio-button>
+      <p class="lang">Elixir</p>
+      <mat-radio-button value="phoenix">Phoenix</mat-radio-button>
+    </mat-radio-group>
+
+    <div class="navigation">
+      <button mat-button matStepperPrevious>Back</button>
+      <div class="border-spacer"></div>
+      <button [class]="!framework ? 'disabled' : ''" mat-button matStepperNext>
+        Next
+      </button>
+    </div>
+  </mat-step>
+  <mat-step label="Done" completed="false">
+    <div class="answers">
+      <div>
+        <div class="answer" *ngFor="let item of computeAnswer()">
+          <p class="label">{{ item.label }}</p>
+          <div class="fill">
+            <p class="code">
+              {{ item.code }}
+              <span class="material-symbols-outlined" (click)="copy(item.code)"
+                >content_copy</span
+              >
+            </p>
+          </div>
+          <p class="docs" *ngIf="item.docs !== undefined">
+            Read more at <a [href]="item.docs">{{ item.docs }}</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="navigation">
+      <button mat-button (click)="reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-stepper>
