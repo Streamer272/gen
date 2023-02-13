@@ -92,7 +92,7 @@ export class FrontendComponent {
           code: `yarn create next-app ${this.name} ${
             isTs ? '--typescript' : ''
           }`,
-          docs: `https://nextjs.org/learn/basics/create-nextjs-app`
+          docs: `https://nextjs.org/learn/basics/create-nextjs-app`,
         });
         break;
       case 'vue':
@@ -106,7 +106,7 @@ export class FrontendComponent {
         result.push({
           label: `Create app`,
           code: `npx nuxi init ${this.name}`,
-          docs: `https://nuxt.com/docs/getting-started/installation`
+          docs: `https://nuxt.com/docs/getting-started/installation`,
         });
         break;
       case 'svelte':
@@ -120,7 +120,7 @@ export class FrontendComponent {
         result.push({
           label: `Create app`,
           code: `yarn create svelte ${this.name}`,
-          docs: `https://kit.svelte.dev/docs/creating-a-project`
+          docs: `https://kit.svelte.dev/docs/creating-a-project`,
         });
         break;
       default:

@@ -68,8 +68,8 @@
     <div class="answers">
       <div>
         <div class="answer" *ngFor="let item of computeAnswer()">
-          <p class="label">{{ item.label }}</p>
-          <div class="fill">
+          <p class="label {{ !item.code && item.docs ? 'centered' : '' }}">{{ item.label }}</p>
+          <div class="fill" *ngIf="item.code">
             <p class="code">
               {{ item.code }}
               <span class="material-symbols-outlined" (click)="copy(item.code)"
@@ -77,8 +77,11 @@
               >
             </p>
           </div>
-          <p class="docs" *ngIf="item.docs !== undefined">
+          <p class="docs" *ngIf="item.code && item.docs">
             Learn more at <a [href]="item.docs">{{ item.docs }}</a>
+          </p>
+          <p class="link" *ngIf="!item.code && item.docs">
+            at <a [href]="item.docs">{{ item.docs }}</a>
           </p>
         </div>
       </div>

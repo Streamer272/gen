@@ -87,6 +87,10 @@
         margin: 1rem 0 0.5rem 0;
         width: 100%;
         text-align: left;
+
+        &.centered {
+          text-align: center;
+        }
       }
 
       .fill {
@@ -103,6 +107,7 @@
           background-color: mat.get-color-from-palette($secondary-palette, 700);
           border-radius: 0.5rem;
           width: fit-content;
+          max-width: 20vw;
 
           .material-symbols-outlined {
             padding: 0;
@@ -115,7 +120,15 @@
       .docs {
         font-size: 0.8rem;
         margin: 0.25rem 0;
+      }
 
+      .link {
+        font-size: 1.15rem;
+        text-align: center;
+      }
+
+      .docs,
+      .link {
         a {
           font-weight: bold;
           color: mat.get-color-from-palette($secondary-palette, 100);
