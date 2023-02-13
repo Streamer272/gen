@@ -45,6 +45,8 @@
       <p class="lang">Golang</p>
       <mat-radio-button value="gin">Gin</mat-radio-button>
       <mat-radio-button value="fiber">Fiber</mat-radio-button>
+      <p class="lang">Ruby</p>
+      <mat-radio-button value="rails">Ruby on Rails</mat-radio-button>
       <p class="lang">Rust</p>
       <mat-radio-button value="rocket">Rocket</mat-radio-button>
       <p class="lang">C#</p>
@@ -76,7 +78,7 @@
             </p>
           </div>
           <p class="docs" *ngIf="item.docs !== undefined">
-            Read more at <a [href]="item.docs">{{ item.docs }}</a>
+            Learn more at <a [href]="item.docs">{{ item.docs }}</a>
           </p>
         </div>
       </div>

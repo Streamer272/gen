@@ -1,12 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MatRadioChange } from '@angular/material/radio';
 import { Title } from '@angular/platform-browser';
-
-interface AnswerPart {
-  label: string;
-  code: string;
-  docs?: string;
-}
+import { AnswerPart } from '../answer';
 
 @Component({
   selector: 'app-backend',
@@ -44,7 +39,21 @@ export class BackendComponent {
   computeAnswer(): AnswerPart[] {
     const result = [];
 
+    // express, nest, next, django, flask, fastapi, spring, ktor, laravel, symfony, gin, fiber, rails, rocket, asp.nett, vapor, phoenix
     switch (this.framework) {
+      case 'express':
+        result.push(
+          {
+            label: `Install Express CLI`,
+            code: `yarn global add express-generator`,
+            docs: `https://expressjs.com/en/starter/generator.html`
+          },
+          {
+            label: `Create app`,
+            code: `express ${this.name}`
+          }
+        );
+        break;
       default:
         return [
           {
