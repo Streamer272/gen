@@ -11,11 +11,13 @@ import { FrontendComponent } from './frontend/frontend.component';
 import { BackendComponent } from './backend/backend.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
+import { ServiceComponent } from './service/service.component';
 
 const routes = [
   { path: '', component: HomeComponent },
   { path: 'frontend', component: FrontendComponent },
   { path: 'backend', component: BackendComponent },
+  { path: 'service', component: ServiceComponent },
   { path: '**', redirectTo: '/' },
 ];
 
@@ -25,6 +27,7 @@ const routes = [
     FrontendComponent,
     BackendComponent,
     HomeComponent,
+    ServiceComponent,
   ],
   imports: [
     BrowserModule,

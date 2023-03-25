@@ -12,7 +12,7 @@
     font-size: 1.4rem;
     color: mat.get-color-from-palette($secondary-palette, 100);
     border: none;
-    padding: 0.25rem .75rem;
+    padding: 0.25rem 0.75rem;
     margin: 0;
     transition: background-color 250ms ease-in-out;
 
@@ -20,11 +20,11 @@
       border-top-left-radius: 1rem;
       border-bottom-left-radius: 1rem;
       padding-left: 1rem;
+    }
 
-      &:not(:last-of-type) {
-        border-right: 1px solid
-          mat.get-color-from-palette($secondary-palette, 700);
-      }
+    &:not(:last-of-type) {
+      border-right: 1px solid
+        mat.get-color-from-palette($secondary-palette, 700);
     }
 
     &:last-of-type {

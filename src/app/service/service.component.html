@@ -1,0 +1,109 @@
+<mat-stepper
+  labelPosition="end"
+  animationDuration="200"
+  orientation="horizontal"
+  class="stepper"
+  linear
+  #stepper
+>
+  <mat-step label="Name" [completed]="!!name">
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Name"
+        (change)="setName(nameInput.value)"
+        #nameInput
+      />
+    </mat-form-field>
+
+    <div class="navigation">
+      <button [class]="!name ? 'disabled' : ''" mat-button matStepperNext>
+        Next
+      </button>
+    </div>
+  </mat-step>
+
+  <mat-step label="Description" [completed]="true">
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Description"
+        (change)="setDescription(descriptionInput.value)"
+        #descriptionInput
+      />
+    </mat-form-field>
+
+    <div class="navigation">
+      <button mat-button matStepperPrevious>Back</button>
+      <button
+        [class]="!description ? 'disabled' : ''"
+        mat-button
+        matStepperNext
+      >
+        Next
+      </button>
+    </div>
+  </mat-step>
+
+  <mat-step label="Command" [completed]="!!command">
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Command"
+        (change)="setCommand(commandInput.value)"
+        #commandInput
+      />
+    </mat-form-field>
+
+    <div class="navigation">
+      <button mat-button matStepperPrevious>Back</button>
+      <button [class]="!command ? 'disabled' : ''" mat-button matStepperNext>
+        Next
+      </button>
+    </div>
+  </mat-step>
+
+  <mat-step label="User" [completed]="!!user">
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="User"
+        [value]="user"
+        (change)="setUser(userInput.value)"
+        #userInput
+      />
+    </mat-form-field>
+
+    <div class="navigation">
+      <button mat-button matStepperPrevious>Back</button>
+      <button [class]="!user ? 'disabled' : ''" mat-button matStepperNext>
+        Next
+      </button>
+    </div>
+  </mat-step>
+
+  <mat-step label="Done" completed="false">
+    <div class="answers">
+      <div>
+        <div class="answer" *ngFor="let item of computeAnswer()">
+          <p class="label">{{ item.label }}</p>
+          <div class="fill">
+            <p class="code">
+              <span [innerHTML]="item.code"></span>
+              <span class="material-symbols-outlined" (click)="copy(item.code)"
+                >content_copy</span
+              >
+            </p>
+          </div>
+          <p class="docs" *ngIf="item.docs !== undefined">
+            Learn more at <a [href]="item.docs">{{ item.docs }}</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="navigation">
+      <button mat-button (click)="reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-stepper>

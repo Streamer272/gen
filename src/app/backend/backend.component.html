@@ -22,6 +22,7 @@
       </button>
     </div>
   </mat-step>
+
   <mat-step label="Framework" [completed]="!!framework">
     <mat-radio-group
       class="radio-group"
@@ -64,11 +65,14 @@
       </button>
     </div>
   </mat-step>
+
   <mat-step label="Done" completed="false">
     <div class="answers">
       <div>
         <div class="answer" *ngFor="let item of computeAnswer()">
-          <p class="label {{ !item.code && item.docs ? 'centered' : '' }}">{{ item.label }}</p>
+          <p class="label {{ !item.code && item.docs ? 'centered' : '' }}">
+            {{ item.label }}
+          </p>
           <div class="fill" *ngIf="item.code">
             <p class="code">
               {{ item.code }}
