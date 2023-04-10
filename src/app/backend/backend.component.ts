@@ -122,7 +122,7 @@ export class BackendComponent {
         result.push({
           label: `Configure and initialize app`,
           code: ``,
-          docs: `https://start.spring.io/`,
+          docs: `https://start.ktor.io/`,
         });
         break;
       case `laravel`:
